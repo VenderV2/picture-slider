@@ -38,7 +38,8 @@ function buttonLogic() {
     const nextBtn = document.querySelector('#next-button');
     let i = 400
     let imageCounter = 1;
-    nextBtn.addEventListener('click', () => {
+    nextBtn.addEventListener('click', moveNext)
+    function moveNext() {
         images.style.transform = 'translate(-' + i + 'px)'
         i += 400
         imageCounter++
@@ -50,8 +51,15 @@ function buttonLogic() {
             images.style.transform = ''
             i = 400
         }
-    })
-}buttonLogic()
+    }
+    let intervalID;
+    if (!intervalID) {
+        intervalID = setInterval(moveNext, 5000)
+    }
+
+}
+buttonLogic()
+
 
 
 
